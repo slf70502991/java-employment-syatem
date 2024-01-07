@@ -1,0 +1,58 @@
+public void updateEmail(Scanner input) {
+		System.out.println("Enter the ID of the employee whose email needs to be updated");	
+		int updateID = input.nextInt();
+		//Check whether the specific employee is found. The default value is true.
+		boolean isNotFound = true;
+		
+		//When isNotFound is set to false then the do-while loop will end.
+		do {
+		//Iterate the ManagerList to find the employee with sPecific ID. If not found, the loop will end move to next for loop.
+			for(Management manager:ManagerList) {
+				if(manager.employeeID == updateID) {
+					System.out.println("Enter the new Email address of the employee");
+					manager.email = input.next();
+					System.out.printf("The new email address of James Rules is %s\n\n", manager.email);
+					isNotFound = false;
+					
+				}
+				break;
+			}
+			//Iterate the DeveloperList to find the employee with sPecific ID.
+			for(Development developer:DeveloperList) {
+				if(developer.employeeID == updateID) {
+					System.out.println("Enter the new Email address of the employee");
+					developer.email = input.next();
+					System.out.printf("The new email address of James Rules is %s \n\n", developer.email);
+					isNotFound = false;
+					break;
+				}
+			}
+			
+			if(isNotFound) {
+				System.out.println("No such employee.\n");
+				break;
+			}
+		}while(isNotFound);
+		
+	}
+
+
+public void updateEmail(Scanner input) {
+		System.out.println("Enter the ID of the employee whose email needs to be updated");	
+		int updateID = input.nextInt();
+		while(ManagerIterator.hasNext()) {
+			if(ManagerIterator.next().employeeID == updateID) {
+				ManagerIterator.next().email = input.next();
+				System.out.printf("The new email address of James Rules is %s\n\n", ManagerIterator.next().email);
+			}
+		}
+		while(DeveloperIterator.hasNext()) {
+			if(DeveloperIterator.next().employeeID == updateID) {
+				DeveloperIterator.next().email = input.next();
+				System.out.printf("The new email address of James Rules is %s\n\n", DeveloperIterator.next().email);
+			}
+		}
+		if (DeveloperIterator.next().employeeID!=updateID && ManagerIterator.next().employeeID!=updateID ) {
+			System.out.println("No such employee.\n");
+		}
+	}

@@ -1,0 +1,56 @@
+public void removeEmployee(Scanner input) throws UnAuthorizedOperationException{
+		System.out.println("Only Managers are allowed to remove and employee. Please provides your ID");
+		int id = input.nextInt();
+		//Create two ArrayLists to store the objects to remove
+		ArrayList<Development> removeDeveloperList = new ArrayList<>();
+		ArrayList<Management> removeManagerList = new ArrayList<>();
+		//Create 2 iterators
+		Iterator<Management> ManagerIterator = ManagerList.iterator();
+		Iterator<Development> DeveloperIterator = DeveloperList.iterator();
+		
+		
+			//Iterate the ManagerlIST to find whether a matched ID has the authority.
+			while(ManagerIterator.hasNext()) {
+				if(ManagerIterator.next().employeeID == id) {
+					
+					System.out.println("How many employees do you want to remove?");
+					int number = input.nextInt();
+					//Check whether the number exceeds the number of total employees
+					if(number> ManagerList.size()+ DeveloperList.size()) {
+						break;
+					}else {
+						for(int i =0; i<=number-1; i++) {
+							System.out.println("Enter the ID of employee you want to remove");
+							int removeID = input.nextInt();
+							//Iterate the developer list
+							for(Development developer:DeveloperList) {
+								if(developer.employeeID == removeID) {
+									removeDeveloperList.add(developer);//Add the developer into removeDeveloperList
+								}else {continue;}
+							}
+							//Iterate the manager list
+							for(Management manager:ManagerList) {
+								if(manager.employeeID == removeID) {
+									removeManagerList.add(manager);//Add the manager into removeDeveloperList
+								}else {continue;}
+							}
+						}
+					}	
+				}else { throw new UnAuthorizedOperationException();}
+				break;
+			}
+		
+		//Remove the employee from developer list
+		while ( DeveloperIterator.hasNext() ){
+	    	if (removeDeveloperList.contains(DeveloperIterator.next())){
+	    		DeveloperIterator.remove();	    		
+	    	}	     
+	    }
+		//Remove the employee from manager list
+		while(ManagerIterator.hasNext()) {
+			if (removeManagerList.contains(ManagerIterator.next())){
+	    		ManagerIterator.remove();	    		
+	    	}
+		}
+		
+	}

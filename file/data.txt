@@ -1,0 +1,18 @@
+Management m1 = new Manager("Rejaul", "Chowdhury",555, "rc@gmail.com", 120000, "AMDC","MG-05");
+	Development d1 = new ITDeveloper("James","Rules",101,"jr@gmail.com",90000, 555,"Java");
+	Development a1 = new ITAnalyst("Lisa","Dorman",102,"ld@gmail.com",85000, 555,"Desktop");
+	
+	Management m2 = new Manager("Cindy", "Bruns",999,"cb@yahoo.com", 125000, "T1SR","MG-06");
+	Development a2 = new ITAnalyst("George","Sarazin",201,"gs@yahoo.com",85000, 999,"Mainframe");
+	Development d2 = new ITDeveloper("Chan","Bui",202,"cb1@yahoo.com",80000, 999,"Cobol");
+
+	EmployeeList(){
+		ManagerList.add(m1);
+		DeveloperList.add(d1);
+		DeveloperList.add(a1);
+		ManagerList.add(m2);
+		DeveloperList.add(a2);
+		DeveloperList.add(d2);
+		
+	};
+	
